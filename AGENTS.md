@@ -71,7 +71,7 @@ This document sets the operational standards, minimalist coding guidelines, secu
 - **Strict Mode**: Maintain 100% strict type compliance. Disallow implicit or unchecked `any`.
 - **Avoid Primitive `string`**: The generic `string` type should rarely be used directly. Instead, define semantic type aliases in `src/modules/{name}/type/MyString.ts` with `export type MyString = string` and use them across the codebase to ensure clarity. Explain the purpose of the type with comments in the definition file.
 - **Async/Await**: Prefer `async`/`await` over raw promise chaining. Handle rejection branches explicitly.
-- **Imports**: Use explicit ES module imports with standard ordering: standard library -> external packages -> internal modules.
+- **Imports**: Use explicit ES module imports with standard ordering: standard library -> external packages -> internal modules. Always use absolute paths instead of relative paths for imports.
 - **Functional & Immutable**: Favor pure functions, immutability, and explicit schema validations (e.g., Zod).
 
 ### General Code Hygiene

@@ -3,5 +3,6 @@
   "permission": {
     "external_directory": "allow",
     "bash": "allow"
-  }
+  },
+  "default_agent": "code"
 }
