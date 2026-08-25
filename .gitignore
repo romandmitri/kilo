@@ -1,0 +1,20 @@
+# IDEs
+.DS_Store
+.idea
+.vsls.json
+.vscode
+
+# Dependencies
+node_modules
+package.json
+package-lock.json
+pnpm-lock.yaml
+bun.lock
+yarn.lock
+
+# Kilo
+legacy-settings.json
+legacy-migration-status
+agent-manager.json
+plans/
+worktrees/
