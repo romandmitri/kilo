@@ -38,5 +38,5 @@ export const Component = (p: Props) => {
 
 ## 4. Shadcn UI Components
 
-- **Download on Demand**: Download and install shadcn components when they are missing.
+- **Download on Demand**: Download and install shadcn components when they are missing (use `npx shadcn@latest add <component>`).
 - **Location**: Place all shadcn components into `services/{name}/src/common/components/shadcn/`.

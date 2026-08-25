@@ -32,6 +32,10 @@ This document sets the operational standards, minimalist coding guidelines, secu
    - Never write self-referential comments (e.g., `// Added by AI assistant`).
    - Never communicate with the user through source code comments.
 
+6. **Zero Repetition & Feedback Persistence**:
+   - Whenever the user instructs an agent to do something differently (e.g. coding styles, architectural patterns, workflow habits, package preferences), immediately persist this instruction into the relevant `AGENTS.md` file (root `/AGENTS.md`, service-level `services/{name}/AGENTS.md`, or nested directories) so the user never has to repeat themselves.
+   - If the preference or guideline applies across all projects or globally, recommend updating the global Kilo configuration files (`~/.config/kilo/AGENTS.md`, `~/.config/kilo/kilo.json`, etc.).
+
 ***
 
 ## Lean & Minimalist Coding Mandates
@@ -40,6 +44,7 @@ This document sets the operational standards, minimalist coding guidelines, secu
    - Write only the simplest, bare-bones code required to achieve the goal in the perfect/happy-path scenario first.
    - Avoid premature abstractions, speculative edge cases, and over-engineered architecture until explicitly demanded.
    - Keep functions compact and single-purpose.
+   - Avoid defensive programming against improbable edge cases or nested, redundant safety checks; assume clean, expected input shapes and let standard exceptions handle errors naturally.
 
 2. **Zero Ternary Operators**:
    - Do **NOT** use ternary operators (`condition ? a : b`) for logic, assignments, or returns.
@@ -63,12 +68,20 @@ This document sets the operational standards, minimalist coding guidelines, secu
    - Enforce a single, explicit configuration key or environment variable. If missing, fail fast with a clear error message.
    - Always provide example values for all environment variables (e.g., in `.env.example`).
 
+5. **Standard Package Manager (`npm`) & Strict Dependency Versioning**:
+   - Always initialize, scaffold, and manage projects using `npm` by default. Do not use or introduce alternative package managers (`yarn`, `pnpm`, `bun`) unless explicitly requested.
+   - **Explicit Version Pinning**: Always use explicit, exact versions when adding or modifying dependencies in `package.json`. Completely ban range prefixes like tilde (`~`) or caret (`^`).
+     - Correct: `"express": "4.18.2"`
+     - Incorrect: `"express": "^4.18.2"`
+   - **Latest Packages First**: Always install explicit latest packages (e.g. `npm install <pkg>@latest --save-exact`). If the latest version is unavailable or conflicts occur, work down toward a stable compatible version or try a different suitable package.
+
 ***
 
 ## Engineering & Language Standards
 
 ### TypeScript & JavaScript
 - **Strict Mode**: Maintain 100% strict type compliance. Disallow implicit or unchecked `any`.
+- **Package Manager**: Use `npm` for dependency installation with exact versions (`--save-exact`) and project scaffolding.
 - **Avoid Primitive `string`**: The generic `string` type should rarely be used directly. Instead, define semantic type aliases in `src/modules/{name}/type/MyString.ts` with `export type MyString = string` and use them across the codebase to ensure clarity. Explain the purpose of the type with comments in the definition file.
 - **Async/Await**: Prefer `async`/`await` over raw promise chaining. Handle rejection branches explicitly.
 - **Imports**: Use explicit ES module imports with standard ordering: standard library -> external packages -> internal modules. Always use absolute paths instead of relative paths for imports.
@@ -88,6 +101,10 @@ This document sets the operational standards, minimalist coding guidelines, secu
   - `src/common/...`
   - `src/modules/...`
 - **Isolation**: Avoid shared `libs` or common folders across different services. Keep each service self-contained.
+- **Hierarchical `AGENTS.md` Maintenance**: Actively create and maintain scoped `AGENTS.md` files across the codebase:
+  - **Project Root (`/AGENTS.md`)**: Global operating standards, minimalist coding mandates, security rules, and engineering baselines.
+  - **Service Level (`services/{name}/AGENTS.md`)**: Service-specific rules, framework patterns (React, Next.js, etc.), and local architectural templates.
+  - **Deeper Nested Folders**: Create and maintain nested `AGENTS.md` files as needed for complex sub-modules, plugins, or isolated architectural boundaries.
 
 ## Security & Data Protection Mandates
 

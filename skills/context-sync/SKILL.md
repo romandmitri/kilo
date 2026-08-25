@@ -25,6 +25,7 @@ Inspect the actual state of the codebase using search tools (`glob`, `grep`, `re
 1. **Service & Module Layout**:
    - List root folders, services (`services/*`), applications, and packages.
    - Discover domain modules (`src/modules/*` or service-specific module trees).
+   - Audit hierarchical `AGENTS.md` files: check root (`/AGENTS.md`), each service (`services/{name}/AGENTS.md`), and any deeper nested module folders.
 
 2. **Configuration & Manifests**:
    - Inspect package manifests (`package.json`, `Cargo.toml`, `go.mod`, etc.).
@@ -42,14 +43,15 @@ Read current `CONTEXT.md` and cross-reference with Phase 1 findings:
 
 1. **Deleted / Renamed Paths**: Remove references to paths, services, or configurations that no longer exist.
 2. **Missing Services / Modules**: Add newly introduced subprojects or architectural boundaries.
-3. **Tech Stack Alignments**: Update versions, runtime details, or architectural paradigms if shifted.
-4. **Token Budget Check**: Ensure the document stays concise (50–150 lines) and excludes ephemeral or function-level details.
+3. **Missing or Outdated AGENTS.md**: Identify missing or incomplete `AGENTS.md` files at root, service level (`services/{name}/AGENTS.md`), or nested modules.
+4. **Tech Stack Alignments**: Update versions, runtime details, or architectural paradigms if shifted.
+5. **Token Budget Check**: Ensure the document stays concise (50–150 lines) and excludes ephemeral or function-level details.
 
 ***
 
 ## Phase 3: Reconciliation & Lean Update
 
-Apply minimal, structured updates to `CONTEXT.md` following this structure:
+1. Apply minimal, structured updates to `CONTEXT.md` following this structure:
 
 ```markdown
 # Project Context
@@ -67,6 +69,11 @@ Apply minimal, structured updates to `CONTEXT.md` following this structure:
 ## Boundaries & Technical Constraints
 - [Runtimes, database engines, message queues, external APIs]
 ```
+
+2. Actively create or update any missing `AGENTS.md` files:
+   - Root (`/AGENTS.md`): Global rules and standards.
+   - Service level (`services/{name}/AGENTS.md`): Service-specific rules and component patterns.
+   - Nested directories: Scoped rules as needed for isolated modules.
 
 ***
 
