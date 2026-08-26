@@ -22,10 +22,10 @@ This skill provides a systematic protocol for capturing user feedback, correctio
 
 Analyze the user's instruction to determine scope and durability:
 
-1. **Scope Classification**:
-   - **Global / Cross-Project**: Universal preferences (e.g., package manager habits, comment density, default shell tools). Target: `~/.config/kilo/AGENTS.md`.
-   - **Project Root**: Repository-wide architectural and coding standards. Target: `/AGENTS.md`.
-   - **Service-Specific**: Framework or domain rules (e.g., Next.js conventions, React component templates, backend service patterns). Target: `services/{name}/AGENTS.md`.
+1. **Scope Classification & Global Target Priority**:
+   - **Global / Cross-Project (Default for General Rules)**: Whenever behavioral feedback, engineering standards, subagent definitions, or skill adjustments apply across projects or represent developer habits, **directly update the global configuration in `~/.config/kilo/`** (specifically `~/.config/kilo/AGENTS.md`, `~/.config/kilo/agent/*.md`, `~/.config/kilo/skills/*`), even when currently working in a deeper or separate repository.
+   - **Project Root**: Rules strictly unique to a specific repository. Target: `/AGENTS.md`.
+   - **Service-Specific**: Rules strictly unique to a service tree (e.g., Next.js conventions, React component templates). Target: `services/{name}/AGENTS.md`.
    - **Nested Sub-Module**: Scoped to deep directories, plugins, or isolated boundaries. Target: `{path}/AGENTS.md`.
 
 2. **Durability Check**:
@@ -59,11 +59,9 @@ Analyze the user's instruction to determine scope and durability:
    - Avoid conversational filler or timestamps in the guideline text.
 
 2. **Apply Scoped Update**:
-   - Update the target `AGENTS.md` file using `edit` or `write`.
+   - Update the target file using `edit` or `write`.
+   - When the rule is a general convention or behavioral update, target `~/.config/kilo/AGENTS.md` (and corresponding global subagents/skills in `~/.config/kilo/`) regardless of the active working directory.
    - Ensure markdown hierarchy and list formatting remain consistent with the rest of the document.
-
-3. **Global Promotion Recommendation**:
-   - If the preference applies globally across all projects, explicitly recommend that the user persist it in `~/.config/kilo/AGENTS.md` or apply it directly to the global configuration.
 
 ***
 
@@ -73,4 +71,4 @@ Analyze the user's instruction to determine scope and durability:
 - [ ] Correct target file selected (root, service-specific, or nested).
 - [ ] No duplicate or contradictory entries created.
 - [ ] Examples provided for syntax-sensitive or formatting-sensitive rules.
-- [ ] Global promotion recommended if broadly applicable.
+- [ ] Global configuration files in `~/.config/kilo/` updated directly for general behavioral/coding standards.

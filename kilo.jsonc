@@ -1,8 +1,14 @@
 {
   "$schema": "https://app.kilo.ai/config.json",
   "permission": {
-    "external_directory": "allow",
-    "bash": "allow"
+    "external_directory": {
+      "*": "allow",
+      "/src/romandmitri/*": "allow"
+    },
+    "bash": "allow",
+    "read": {
+      "/src/romandmitri/*": "allow"
+    }
   },
-  "default_agent": "ask"
+  "default_agent": "code"
 }

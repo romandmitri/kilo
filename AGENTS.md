@@ -32,9 +32,9 @@ This document sets the operational standards, minimalist coding guidelines, secu
    - Never write self-referential comments (e.g., `// Added by AI assistant`).
    - Never communicate with the user through source code comments.
 
-6. **Zero Repetition & Feedback Persistence**:
-   - Whenever the user instructs an agent to do something differently (e.g. coding styles, architectural patterns, workflow habits, package preferences), immediately persist this instruction into the relevant `AGENTS.md` file (root `/AGENTS.md`, service-level `services/{name}/AGENTS.md`, or nested directories) so the user never has to repeat themselves.
-   - If the preference or guideline applies across all projects or globally, recommend updating the global Kilo configuration files (`~/.config/kilo/AGENTS.md`, `~/.config/kilo/kilo.json`, etc.).
+6. **Zero Repetition & Global Feedback Persistence**:
+   - Whenever the user instructs an agent to do something differently (e.g. coding styles, architectural patterns, workflow habits, package preferences), immediately persist this instruction into the relevant `AGENTS.md` file so the user never has to repeat themselves.
+   - **Global Configuration Target (`~/.config/kilo/`)**: Even when working inside a deeper or separate repository/worktree, general behavioral rules, engineering standards, subagent definitions, and skills MUST directly target and update the global configuration files in `~/.config/kilo/` (specifically `~/.config/kilo/AGENTS.md`, `~/.config/kilo/agent/*.md`, `~/.config/kilo/skills/*`, `~/.config/kilo/kilo.jsonc`).
 
 ***
 
@@ -102,7 +102,8 @@ This document sets the operational standards, minimalist coding guidelines, secu
   - `src/modules/...`
 - **Isolation**: Avoid shared `libs` or common folders across different services. Keep each service self-contained.
 - **Hierarchical `AGENTS.md` Maintenance**: Actively create and maintain scoped `AGENTS.md` files across the codebase:
-  - **Project Root (`/AGENTS.md`)**: Global operating standards, minimalist coding mandates, security rules, and engineering baselines.
+  - **Global Base (`~/.config/kilo/AGENTS.md`)**: Root source of truth for global operating standards, minimalist coding mandates, security rules, and engineering baselines applied across all projects.
+  - **Project Root (`/AGENTS.md`)**: Project-specific architecture, tech stack baselines, and repository-level conventions.
   - **Service Level (`services/{name}/AGENTS.md`)**: Service-specific rules, framework patterns (React, Next.js, etc.), and local architectural templates.
   - **Deeper Nested Folders**: Create and maintain nested `AGENTS.md` files as needed for complex sub-modules, plugins, or isolated architectural boundaries.
 
