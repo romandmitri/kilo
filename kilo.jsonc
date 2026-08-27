@@ -11,6 +11,6 @@
     "task": "allow",
     "skill": "allow"
   },
-  "default_agent": "plan",
+  "default_agent": "code",
   "model": "openrouter/~anthropic/claude-fable-latest"
 }

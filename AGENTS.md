@@ -50,7 +50,11 @@ This document sets the operational standards, minimalist coding guidelines, secu
    - Do **NOT** use ternary operators (`condition ? a : b`) for logic, assignments, or returns.
    - Use explicit, readable `if (...) { ... } else { ... }` blocks to ensure clean stack traces and readable branching.
 
-3. **Minimal Styling & No CSS Bloat**:
+3. **Zero Em Dashes & Clean Punctuation**:
+   - Never use long em dashes (`—`).
+   - Only use spaced hyphens (` - `) if necessary, and prefer avoiding dashes altogether by writing cleaner, direct sentences.
+
+4. **Minimal Styling & No CSS Bloat**:
    - Restrict styles to bare-bones layout rules and clean semantic HTML/components.
    - Do **NOT** generate massive walls of Tailwind CSS utility classes or decorative styling that clutter and obscure component logic.
    - Keep styling strictly functional and minimal unless explicit design tokens or detailed CSS are requested.
