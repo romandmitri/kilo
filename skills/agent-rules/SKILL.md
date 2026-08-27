@@ -41,6 +41,7 @@ Analyze the user's instruction to determine scope and durability:
 
 2. **Categorize the Rule**:
    - **Core Operating Principles**: High-level workflow, verification, communication rules.
+   - **Kilo Architecture (SSOT)**: Skills (`SKILL.md`) as the single source of truth for all domain rules, checklists, and protocols; Agents as lean execution environments with minimal prompts; Commands as minimal invocation wrappers.
    - **Lean & Minimalist Coding Mandates**: Simplicity, ternary bans, styling constraints, configuration single source of truth, package pinning.
    - **Engineering & Language Standards**: TypeScript/JS strictness, imports, type aliases, async/await patterns.
    - **Service / Component Guidelines**: Component templates, extraction rules, UI library placement (e.g., shadcn).
@@ -70,5 +71,6 @@ Analyze the user's instruction to determine scope and durability:
 - [ ] Rule is concise, unambiguous, and directly actionable.
 - [ ] Correct target file selected (root, service-specific, or nested).
 - [ ] No duplicate or contradictory entries created.
+- [ ] Agent prompts maintain SSOT by delegating to skills rather than duplicating domain rules or checklists.
 - [ ] Examples provided for syntax-sensitive or formatting-sensitive rules.
 - [ ] Global configuration files in `~/.config/kilo/` updated directly for general behavioral/coding standards.

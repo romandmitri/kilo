@@ -125,6 +125,22 @@ This document sets the operational standards, minimalist coding guidelines, secu
 
 ## Multi-Agent Protocols & Subagent Delegation
 
+### Kilo Architecture: Skills as Single Source of Truth (SSOT)
+
+To maintain clarity, eliminate configuration drift, and ensure clean separation of concerns, all Kilo agents, skills, and commands must strictly follow the **3-Tier SSOT Architecture**:
+
+1. **Skills (`{skill,skills}/<name>/SKILL.md`, `~/.config/kilo/skills/*/SKILL.md`) — Single Source of Truth**:
+   - The authoritative source for all domain rules, business logic, formatting standards, STAR method constraints, quality gates, evaluation checklists, and execution protocols.
+   - All procedural guidelines, step-by-step instructions, schemas, and templates MUST reside here.
+
+2. **Agents (`{agent,agents}/<name>.md`, `~/.config/kilo/agent/*.md`) — Lean Execution Shells**:
+   - Define runtime configuration: permissions (`edit`, `read`, `glob`, `grep`, `bash`, `skill`, etc.), target models, and execution steps.
+   - System prompts must remain minimal: establish persona/identity and explicitly delegate execution to the matching skill using the `skill` tool.
+   - **Zero Duplication**: Agents MUST NOT duplicate, paraphrase, or embed domain rules, formatting checklists, or procedures defined in skills.
+
+3. **Commands (`{command,commands}/<name>.md`) — Minimal Invocation Wrappers**:
+   - Concise slash-command entrypoints that bind to their target agent (`agent: <name>`) and forward parameters (`$ARGUMENTS` or positional args `$1`, `$2`) directly to the agent.
+
 ### Subagent Delegation
 - **Read-Only Reviewers & Auditors**: Review, security, and feasibility subagents must operate with read permissions (`edit: deny`, `write: deny`) and refrain from direct code mutations.
 - **Feasibility Verification**: Invoke `feasibility-checker` before attempting risky or multi-layer integrations.

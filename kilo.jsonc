@@ -1,14 +1,16 @@
 {
   "$schema": "https://app.kilo.ai/config.json",
   "permission": {
-    "external_directory": {
-      "*": "allow",
-      "/src/romandmitri/*": "allow"
-    },
+    "external_directory": "ask",
     "bash": "allow",
-    "read": {
-      "/src/romandmitri/*": "allow"
-    }
+    "read": "allow",
+    "edit": "allow",
+    "glob": "allow",
+    "grep": "allow",
+    "list": "allow",
+    "task": "allow",
+    "skill": "allow"
   },
-  "default_agent": "code"
+  "default_agent": "plan",
+  "model": "openrouter/~anthropic/claude-fable-latest"
 }
