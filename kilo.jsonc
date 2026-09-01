@@ -11,7 +11,5 @@
     "task": "allow",
     "skill": "allow"
   },
-  "default_agent": "plan",
-  "model": "openrouter/google/gemini-3.7-flash",
-  "small_model": "openrouter/google/gemini-3.5-flash-lite"
+  "default_agent": "ask"
 }
