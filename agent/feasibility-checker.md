@@ -1,7 +1,7 @@
 ---
 description: Technical feasibility gatekeeper verifying platform limitations, API constraints, and spike testing
 mode: subagent
-model: google/gemini-3.7-flash
+#model: google/gemini-3.7-flash
 steps: 15
 hidden: false
 color: "#E11D48"

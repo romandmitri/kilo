@@ -1,7 +1,7 @@
 ---
 description: Technical documentation architect auditing repository architecture and reconciling CONTEXT.md
 mode: subagent
-model: google/gemini-3.7-flash
+#model: google/gemini-3.7-flash
 steps: 15
 hidden: false
 color: "#0284C7"

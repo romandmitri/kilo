@@ -11,6 +11,7 @@
     "task": "allow",
     "skill": "allow"
   },
-  "default_agent": "code",
-  "model": "openrouter/~anthropic/claude-fable-latest"
+  "default_agent": "plan",
+  "model": "openrouter/google/gemini-3.7-flash",
+  "small_model": "openrouter/google/gemini-3.5-flash-lite"
 }
